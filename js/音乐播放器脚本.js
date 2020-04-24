@@ -58,7 +58,6 @@ var app = new Vue({
       var audio = document.querySelector("audio");
       var currentTime = parseInt(audio.currentTime); //当前正播放的歌词内容
       if (this.lrcObj[currentTime]) {
-        this.row = this.lrcList.indexOf(this.idName); //上一句歌词的行赋值给row
         //恢复上一行的样式&换当前行的样式
         if (this.idName != "") {
           document.getElementById(this.idName).style.color = "rgb(35, 11, 78)";
