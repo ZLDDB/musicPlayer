@@ -1,0 +1,300 @@
+/* icon样式 */
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+/* 初始化样式 */
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+body {
+  background: url(../media/50597e65efdc2.jpg) no-repeat;
+  background-size: cover;
+}
+/* 整个播放器 */
+#music {
+  position: relative;
+  width: 800px;
+  height: 530px;
+  margin: 20px auto;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(
+    to right top,
+    rgb(180, 180, 75),
+    rgb(192, 69, 155)
+  );
+}
+/* 导航部分开始 */
+header {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(235, 178, 103);
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+  line-height: 50px;
+}
+#title {
+  position: absolute;
+  left: 20px;
+  font-size: 26px;
+  font-family: "幼圆";
+  font-weight: bold;
+}
+#search {
+  position: absolute;
+  right: 20px;
+}
+input {
+  height: 25px;
+  width: 280px;
+  border-radius: 2px;
+  font-size: 16px;
+  font-family: "楷体";
+}
+header button {
+  position: relative;
+  top: 3.2px;
+  left: 1px;
+  height: 27px;
+  width: 30px;
+  font-size: 23px;
+}
+/* 导航部分结束 */
+/* 主体部分开始 */
+#main {
+  position: relative;
+  width: 100%;
+  height: 430px;
+}
+/* 歌单列表 */
+#musicList {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 200px;
+  overflow: auto;
+  border-right: dashed 0.4px rgb(112, 133, 54);
+}
+#musicList::-webkit-scrollbar {
+  display: none;
+}
+#musicItem {
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  margin-bottom: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+#musicItem .icon {
+  cursor: pointer;
+}
+#iconPlayer {
+  position: absolute;
+  left: 12px;
+  font-size: 16px;
+}
+#iconPlayer .icon {
+  position: relative;
+  top: 2.5px;
+  left: -2px;
+  font-size: 22px;
+}
+#iconVideo {
+  position: relative;
+  left: 81px;
+  top: -1.2px;
+  font-size: 28px;
+}
+/* 热门评论 */
+#message {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 200px;
+  overflow: auto;
+  border-left: cadetblue dashed 0.4px;
+}
+#message::-webkit-scrollbar {
+  display: none;
+}
+#messageTitle {
+  position: relative;
+  left: 5px;
+  height: 35px;
+  width: 100%;
+  line-height: 35px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: rgb(33, 5, 66);
+}
+#messageTitle .icon {
+  position: relative;
+  left: 1px;
+  top: 1px;
+  font-size: 24px;
+}
+/* 评论列表 */
+#messageItem {
+  position: relative;
+  margin-bottom: 8px;
+}
+#userImg {
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#message img {
+  width: 100%;
+}
+#userItem {
+  position: relative;
+  left: 20px;
+  width: 140px;
+  display: inline-block;
+  text-align: left;
+}
+#userName {
+  margin: 5px 0;
+  font-size: 16px;
+  font-family: "宋体";
+}
+#messageText {
+  width: 160px;
+  font-size: 15px;
+  font-family: "仿宋";
+}
+/* 中间唱片效果 */
+#player {
+  position: relative;
+  text-align: center;
+}
+#bar {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform-origin: left top;
+  transform: rotate(-20deg);
+  transition: all 0.3s linear;
+}
+/* 播放音乐时的bar */
+.play #bar {
+  transform: rotate(10deg);
+}
+/* 专辑图片 */
+#musicImg {
+  position: absolute;
+  width: 145px;
+  height: 145px;
+  top: 128px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  border-radius: 50%;
+}
+#musicImg img {
+  width: 100%;
+}
+#dimg {
+  width: 254px;
+  height: 259px;
+  position: absolute;
+  top: 80px;
+  left: 273px;
+}
+.play #dimg {
+  animation: rotate 6s linear infinite forwards;
+  animation-play-state: running;
+}
+@keyframes rotate {
+  from {
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+/* 音乐播放 */
+#audio {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(241, 243, 244);
+}
+audio {
+  margin: 0 auto;
+  width: 100%;
+}
+/* 视频播放 */
+video {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 800px;
+  height: 100%;
+}
+#video button {
+  position: relative;
+  top: -490px;
+  left: 370px;
+  z-index: 6;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  background-color: rgb(95, 94, 94);
+}
+.noVideo {
+  display: none;
+}
+.hasVideo {
+  display: block;
+}
+/* 设置歌词样式 */
+#lrc {
+  width: 300px;
+  height: 410px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 15px auto;
+  overflow: auto;
+  color: rgb(35, 11, 78);
+  font-size: 15px;
+  display: none;
+}
+#lrc::-webkit-scrollbar {
+  display: none;
+}
+#lrc ul {
+  width: 300px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#lrc li {
+  margin: 8px 0;
+}
+.showLrc #dimg,
+.showLrc #bar {
+  display: none;
+}
+.showLrc #lrc {
+  display: block;
+}
