@@ -76,7 +76,7 @@ var app = new Vue({
             lrcStyle.setProperty("top", 0);
           }
           if (newRow >= 7) {
-            var addRow = newRow - 6 - count;
+            var addRow = newRow - 6;
             var top = -27 * addRow + "px";
             lrcStyle.setProperty("top", top);
           }
