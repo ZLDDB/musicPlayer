@@ -55,19 +55,14 @@ var app = new Vue({
     },
     //歌曲播放实现歌词滚动
     lrcScroll: function () {
-      var count = 0;
       var audio = document.querySelector("audio");
       var currentTime = parseInt(audio.currentTime); //当前正播放的歌词内容
       if (this.lrcObj[currentTime]) {
         this.row = this.lrcList.indexOf(this.idName); //上一句歌词的行赋值给row
-        var listStyle = document.getElementById(this.idName).style;
-        if (parseInt(listStyle.height) > 30) {
-          count++;
-        }
         //恢复上一行的样式&换当前行的样式
         if (this.idName != "") {
-          listStyle.color = "rgb(35, 11, 78)";
-          listStyle.fontSize = "15px";
+          document.getElementById(this.idName).style.color = "rgb(35, 11, 78)";
+          document.getElementById(this.idName).style.fontSize = "15px";
         }
         this.idName = this.lrcObj[currentTime];
         document.getElementById(this.idName).style.color = "rgb(220, 231, 60)";
