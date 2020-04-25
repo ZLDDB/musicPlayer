@@ -78,7 +78,7 @@ var app = new Vue({
           }
           if (newRow >= 6) {
             var addRow = newRow - 5;
-            var top = -27 * addRow + "px";
+            var top = -29 * addRow + "px";
             lrcStyle.setProperty("top", top);
           }
         }
