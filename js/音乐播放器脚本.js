@@ -32,7 +32,6 @@ var app = new Vue({
   data: {
     picUrl: "media/2345截图20200423155911.png",
     musicUrl: "",
-    videoUrl: "",
     searchText: "",
     musicList: [],
     commentList: [],
@@ -55,14 +54,17 @@ var app = new Vue({
     },
     //歌曲播放实现歌词滚动
     lrcScroll: function () {
+      var count = 0;
       var audio = document.querySelector("audio");
       var currentTime = parseInt(audio.currentTime); //当前正播放的歌词内容
       if (this.lrcObj[currentTime]) {
-        //恢复上一行的样式&换当前行的样式
+        this.row = this.lrcList.indexOf(this.idName); //上一句歌词的行赋值给row
+        //恢复上一行的样式
         if (this.idName != "") {
           document.getElementById(this.idName).style.color = "rgb(35, 11, 78)";
           document.getElementById(this.idName).style.fontSize = "15px";
         }
+        //更换当前行的样式
         this.idName = this.lrcObj[currentTime];
         document.getElementById(this.idName).style.color = "rgb(220, 231, 60)";
         document.getElementById(this.idName).style.fontSize = "19px";
@@ -71,11 +73,11 @@ var app = new Vue({
         if (newRow != this.row) {
           this.row = newRow;
           var lrcStyle = document.querySelector("#lrc ul").style;
-          if (newRow < 7) {
+          if (newRow < 6) {
             lrcStyle.setProperty("top", 0);
           }
-          if (newRow >= 7) {
-            var addRow = newRow - 6;
+          if (newRow >= 6) {
+            var addRow = newRow - 5;
             var top = -27 * addRow + "px";
             lrcStyle.setProperty("top", top);
           }
