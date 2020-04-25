@@ -69,15 +69,15 @@ var app = new Vue({
         document.getElementById(this.idName).style.color = "rgb(220, 231, 60)";
         document.getElementById(this.idName).style.fontSize = "19px";
         var newRow = this.lrcList.indexOf(this.idName); //获取当前行
-        //从第七行开始，如果行变化就滚动
+        //从第八行开始，如果行变化就滚动
         if (newRow != this.row) {
           this.row = newRow;
           var lrcStyle = document.querySelector("#lrc ul").style;
-          if (newRow < 6) {
+          if (newRow < 7) {
             lrcStyle.setProperty("top", 0);
           }
-          if (newRow >= 6) {
-            var addRow = newRow - 5;
+          if (newRow >= 7) {
+            var addRow = newRow - 6;
             var top = -29 * addRow + "px";
             lrcStyle.setProperty("top", top);
           }
