@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>小孟听音乐</title>
+    <link rel="stylesheet" href="css/音乐播放器样式.css" />
+    <link rel="icon" href="media/音乐.png" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- 设置元素开始 -->
+    <div id="music">
+      <!-- 导航栏开始 -->
+      <header>
+        <!-- 导航栏左边的标志 -->
+        <div id="title">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-yinle"></use>
+          </svg>
+          小孟听音乐
+        </div>
+        <!-- 导航栏右边的搜索框 -->
+        <div id="search">
+          <input
+            v-model="searchText"
+            type="text"
+            autofocus
+            autocomplete="off"
+            placeholder="你来啦~搜点什么听听叭(*^▽^*)"
+            @keyup.enter="goSearch"
+          />
+          <button type="submit" @click="goSearch">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-sousuo1"></use>
+            </svg>
+          </button>
+        </div>
+      </header>
+      <!-- 导航栏结束 -->
+      <!-- 主体开始 -->
+      <section id="main" :class="show">
+        <!-- 主体左边的歌单列表 -->
+        <div id="musicList">
+          <ul>
+            <li id="musicItem" v-for="item in musicList">
+              <span id="iconPlayer" @click="playMusic(item.id)">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-bofang2"></use>
+                </svg>
+                {{item.name}}
+              </span>
+              <span
+                id="iconVideo"
+                v-if="item.mvid != 0"
+                @click="playVideo(item.mvid)"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-bofang1"></use>
+                </svg>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <!-- 主体左边的留言 -->
+        <!-- 留言标题 -->
+        <div id="message">
+          <div id="messageTitle">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-pinglun"></use>
+            </svg>
+            <span id="mes">热门留言</span>
+          </div>
+          <!-- 留言列表 -->
+          <div id="messageList">
+            <ul>
+              <li id="messageItem" v-for="item in commentList">
+                <!-- 留言头像 -->
+                <div id="userImg">
+                  <img :src="item.user.avatarUrl" />
+                </div>
+                <div id="userItem">
+                  <!-- 用户名 -->
+                  <h3 id="userName">{{item.user.nickname}}</h3>
+                  <!-- 留言内容 -->
+                  <span id="messageText">{{item.content}}</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- 中间歌曲专辑部分开始 -->
+        <!-- 专辑图片 -->
+        <div id="player" :class="isPlay">
+          <div id="dimg" @click="showLrc" title="点击查看歌词">
+            <div id="musicImg">
+              <img :src="picUrl" />
+            </div>
+            <div id="disc">
+              <img src="media/disc.png" />
+            </div>
+          </div>
+          <div id="bar">
+            <img src="media/player_bar.png" />
+          </div>
+        </div>
+        <!-- 歌词 -->
+        <div id="lrc" @click="showPic" title="点击显示专辑封面">
+          <ul>
+            <li v-for="item in lrcList" :id="item">{{item}}</li>
+          </ul>
+        </div>
+      </section>
+      <!-- 中间歌曲专辑部分结束 -->
+      <!-- 主体结束 -->
+      <!-- 页脚播放栏开始 -->
+      <footer>
+        <div id="audio">
+          <audio
+            controls
+            :src="musicUrl"
+            autoplay
+            @playing="playing"
+            @pause="paused"
+            @timeupdate="lrcScroll"
+            @seeked="lrcScroll"
+          ></audio>
+        </div>
+      </footer>
+      <div id="video" :class="isPlayVideo">
+        <video autoplay controls :src="mvUrl" :class="isPlayVideo"></video>
+        <button type="submit" @click="stopVideo">×</button>
+      </div>
+      <!-- 页脚播放栏结束 -->
+    </div>
+    <!-- 设置元素结束 -->
+    <!-- 引入axios库 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- 引入开发版的vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入js脚本 -->
+    <script src="js/iconfont.js"></script>
+    <script src="js/音乐播放器脚本.js"></script>
+  </body>
+</html>
